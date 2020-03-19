@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 
 import {Route} from "react-router-dom"
 import "./App.css"
@@ -7,7 +7,7 @@ import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignIn from './components/sign-in/sign-in.component';
 
-import {auth} from "./firebase/firebase.utils"
+import {auth,createUserProfileDocument} from "./firebase/firebase.utils"
 
 
 
@@ -21,13 +21,27 @@ class App extends React.Component  {
   }
   unsubscribeFromAuth = null;
   componentDidMount(){
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user=>{
-      this.setState({currentUser:user});
-      console.log(user)
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth ,otheData)=>{
+      if(userAuth) {
+        const userRef = await  createUserProfileDocument(userAuth) 
+        userRef.onSnapshot(snapShot=>{
+        
+          this.setState({
+            currentUser:{
+              id:snapShot.id, 
+              ...snapShot.data()
+            }
+          })
+
+        })
+      }else{
+        this.setState({currentUser:null})
+      }
+      
     })
-  
   }
   render(){
+    console.log(this.state.currentUser)
     return (
       <div>
         <Header currentUser={this.state.currentUser}/>

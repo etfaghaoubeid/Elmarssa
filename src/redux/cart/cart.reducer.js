@@ -1,5 +1,5 @@
-import {TOGGLE_CART_HIDDEN, ADD_ITEM} from "./cart.action.types"
-import {addItemToCart} from "./cart.utils";
+import {TOGGLE_CART_HIDDEN, ADD_ITEM,REMOVE_ITEM,DECREASE_ITEM,INCREASE_ITEM} from "./cart.action.types"
+import {addItemToCart,removeItemFromCart,decreaseQuantity,increaseQuantity} from "./cart.utils";
 
 const initState = {
     hidden:true,
@@ -18,7 +18,23 @@ const cartReducer = (state = initState, action)=>{
                 ...state, 
                 cartItems:addItemToCart( state.cartItems , action.payload),
                 
+            } 
+        case REMOVE_ITEM:
+            return{
+                ...state,
+                cartItems:removeItemFromCart(state.cartItems, action.payload)
+            }   
+        case DECREASE_ITEM:
+            return{
+                ...state,
+                cartItems:decreaseQuantity(state.cartItems, action.payload)
+            }
+        case INCREASE_ITEM:
+            return{
+                ...state,
+                cartItems:increaseQuantity(state.cartItems, action.payload)
             }    
+
         default:
             return state;
         

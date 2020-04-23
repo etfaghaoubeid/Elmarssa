@@ -40,4 +40,4 @@ const directoryReducer = (state=initState,action)=>{
         return state;
     }
 }
-export default directoryReducer;
+export default directoryReducer ;

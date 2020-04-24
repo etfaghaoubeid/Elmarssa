@@ -9,13 +9,12 @@ import { selectCartHidden } from "../../redux/cart/cart.selectors"
 
 import {HeaderContainer, LogoContainer,OptionsContainer,OptionLink,OptionDiv} from "./header.styles"
 
-import "./header.styles.scss" ;
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 const Header = ({currentUser , hidden})=>(
     <HeaderContainer>
-        <LogoContainer>
+        <LogoContainer to="/">
          <Logo/>
         </LogoContainer>
         <OptionsContainer className="options">

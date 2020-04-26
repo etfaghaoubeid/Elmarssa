@@ -9,7 +9,7 @@ import CartItem from "../cart-item/cart-item.component";
 
 const CartDropdown = ({cartItems , history,toggleCartHidden})=>(
     <CartDropdwonContainer>
-        <CartItems >
+        <CartItems>
             {
               cartItems.length?(
               cartItems.map(cartItem=><CartItem key={cartItem.id} item={cartItem}/>)
@@ -20,7 +20,7 @@ const CartDropdown = ({cartItems , history,toggleCartHidden})=>(
         </CartItems >
         <GoToCheckOut>
             <CustomButton onClick={()=>{history.push("/checkout");toggleCartHidden()} }>GO TO CHECKOUT</CustomButton>
-            </GoToCheckOut>
+        </GoToCheckOut>
     </CartDropdwonContainer>
 )
 const mapStateToProps = state=>({

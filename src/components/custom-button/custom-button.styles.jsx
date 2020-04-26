@@ -36,7 +36,7 @@ const getButtonStyle = ({isGoogleSignIn, inverted}) => {
     return inverted? InvertedButton: ButtonStyle
 }
 
-export const CustomButtonContainet = styled.button`
+export const CustomButtonContainer = styled.button`
     min-width: 165px;
     width:auto;
     height:50px;

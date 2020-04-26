@@ -1,21 +1,21 @@
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import {CollectionContainer, Title,ItemsContainer} from "./collection.styles"
 import { selectCollection } from "../../redux/shop/shop.selectors";
 import CollectionItem from "../../components/collection-item/collection-item.component"
-import "./collection.styles.scss";
 
 const CollectionPage = ({ collection }) => {
     console.log(collection)
  const {items, title}=  collection
     
 return (
-    <div className="collection-page">
-        <h1 className="title">{title}</h1>
-        <div className="items">
+    <CollectionContainer>
+        <Title>{title}</Title>
+        <ItemsContainer className="items">
            {items.map(item=>(<CollectionItem key={item.id} item={item}/>))}
-        </div>
+        </ItemsContainer>
        
-    </div>
+    </CollectionContainer>
 )}
 const mapStateToProps = (state,ownProps)=>({
     collection:selectCollection(ownProps.match.params.collectionId)(state)

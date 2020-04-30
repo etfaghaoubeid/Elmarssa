@@ -6,9 +6,13 @@ export const selectShopCollections = createSelector(
 );
 export const selectShopCollectionForCollectionOverview = createSelector(
     [selectShopCollections], 
-    collections=>Object.keys(collections).map(collection=>collections[collection])
+    collections=>collections?Object.keys(collections).map(collection=>collections[collection]):[]
 )
 export const selectCollection = collectionUrlPrams=>createSelector(
     [selectShopCollections],
-    collections=>collections[collectionUrlPrams] 
+    collections=> collections? collections[collectionUrlPrams]:null 
+)
+export const selectFetching = createSelector(
+    [selectShop],
+    shop=>shop.fetching
 )

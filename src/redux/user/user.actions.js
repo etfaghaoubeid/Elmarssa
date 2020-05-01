@@ -7,12 +7,21 @@ import {
     EMAIL_SIGN_IN_START,
     EMAIL_SIGN_IN_SUCCESS,
     SIGN_IN_SUCCESS,
-    SIGN_IN_FAILURE
+    SIGN_IN_FAILURE,
+    START_SIGN_OUT,
+    SIGN_OUT_SUCCESS,
+    SIGN_OUT_FAILURE
 } from "./user.action.types"
 
-export const setCurrentUser = user => ({
-    type:SET_CURRENT_USER,
-    payload:user
+export const startSignOut = ()=> ({
+    type:START_SIGN_OUT
+})
+export const signOutFailure = (erroMessage)=> ({
+    type: SIGN_OUT_FAILURE,
+    payload:erroMessage
+})
+export const signOutSuccess = ()=> ({
+    type:SIGN_OUT_SUCCESS
 })
 export const signInFailure = (message)=>({
     type:SIGN_IN_FAILURE,

@@ -7,7 +7,9 @@ import {
     EMAIL_SIGN_IN_START,
     EMAIL_SIGN_IN_SUCCESS,
     SIGN_IN_SUCCESS,
-    SIGN_IN_FAILURE
+    SIGN_IN_FAILURE,
+    SIGN_OUT_FAILURE,
+    SIGN_OUT_SUCCESS
 } from "./user.action.types"
 const initState= {
     currentUser: null,
@@ -27,9 +29,15 @@ export default function userReducer(state =initState, action ){
                 ...state,
                 currentUser: action.payload,
                 errorMessage:null
-                
+            }
+        case SIGN_OUT_SUCCESS:
+            return {
+                ...state,
+                currentUser:null,
+                errorMessage:null
             }
         case SIGN_IN_FAILURE:
+        case SIGN_OUT_FAILURE:    
             return {
                 ...state,
                 errorMessage:action.payload

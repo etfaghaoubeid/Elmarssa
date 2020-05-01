@@ -4,27 +4,23 @@ import { Route } from "react-router-dom";
 
 import CollecionOverViewContainer from "../../components/collections-overview/collection-overview.container";
 import CollectionPageContainer from "../collection/collection.container"
-
-import {fetchCollectionsSuccess} from "../../redux/shop/shop.actions"
+import {ShopPageContainer} from "./shop.styles"
+import {startFetchCollections} from "../../redux/shop/shop.actions"
 
 const ShopPage = (props) => {
-    const { match ,fetchCollectionsSuccess} = props
+    const { match ,startFetchCollections} = props
     useEffect(() => {
-        fetchCollectionsSuccess()
+        startFetchCollections()
         
     },[])
     return(
-        <div className="shop-page">
+        <ShopPageContainer>
             <Route exact path={`${match.path}`} component={CollecionOverViewContainer}/>
-        <Route exact path={`${match.path}/:collectionId`} component={CollectionPageContainer} />
-       </div>
+            <Route exact path={`${match.path}/:collectionId`} component={CollectionPageContainer} />
+       </ShopPageContainer>
     )  
 }
-
 const mapDispatchToProps = dispatch => ({
-    fetchCollectionsSuccess:()=>dispatch(fetchCollectionsSuccess())
+    startFetchCollections:()=>dispatch(startFetchCollections())
 })
-
-
-
 export default connect(null,mapDispatchToProps)(ShopPage);

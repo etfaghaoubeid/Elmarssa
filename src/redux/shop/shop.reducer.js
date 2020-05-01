@@ -1,19 +1,20 @@
 import {
-  UPDATE_COLLECTIONS,
   START_FETCH_COLLECECTIONS,
   FETCH_COLLECECTIONS_SUCCESS,
   FETCH_COLLECECTIONS_FAILURE
 } from "./shop.action.types"
 const initState = {
   collections: null,
-  fetching:false
+  fetching: false,
+  erro: ""
 }
 const shopReducer = (state=initState, action)=>{
   switch (action.type) {
     case START_FETCH_COLLECECTIONS:
       return {
         ...state,
-        fetching:true
+        fetching: true,
+        erroMessage: ""
       }
     case FETCH_COLLECECTIONS_SUCCESS:
       return {
@@ -24,15 +25,12 @@ const shopReducer = (state=initState, action)=>{
     case FETCH_COLLECECTIONS_FAILURE:
       return {
         ...state,
-        fetching:false
+        fetching: false,
+        erroMessage:action.message
       }
-    case UPDATE_COLLECTIONS:
-      return {
-        ...state, 
-        collections:action.payload
-      }
-        default:
-          return state;
+    
+      default:
+        return state;
     }
 }
 export default shopReducer;

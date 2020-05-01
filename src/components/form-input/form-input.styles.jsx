@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
-const grey= "grey";
-const black= "black";
+const subColor= "grey";
+const mainColor= "black";
 const shared = css`
   top: -14px;
   font-size: 12px;
-  color: black;
+  color: ${mainColor};
 `
 export const Group = styled.div`
   position: relative;
@@ -19,7 +19,7 @@ export const Group = styled.div`
 export const FormInputs = styled.input`
     background: none;
     background-color: white;
-    color: $sub-color;
+    color: ${subColor};
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
@@ -33,12 +33,12 @@ export const FormInputs = styled.input`
       outline: none;
     }
 
-    &:focus ~ .form-input-label {
+    &:focus ~ label {
       ${shared}
     }
 `
 export const FormInputLabel = styled.label`
-    color: grey;
+    color: ${subColor};
     font-size: 16px;
     font-weight: normal;
     position: absolute;
@@ -46,8 +46,10 @@ export const FormInputLabel = styled.label`
     left: 5px;
     top: 10px;
     transition: 300ms ease all;
+    &.shrink{
+      ${shared}
+    }
 
-    ${({shrink})=>shrink?shared:null}
 
 
 `

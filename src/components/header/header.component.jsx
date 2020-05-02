@@ -4,7 +4,7 @@ import {connect} from "react-redux"
 import {ReactComponent as Logo} from "../../logo.svg"
 import {currentUserSelector} from "../../redux/user/user.selectors"
 import { selectCartHidden } from "../../redux/cart/cart.selectors"
-import {startSignOut} from "../../redux/user/user.actions"
+import { startSignOut } from "../../redux/user/user.actions"
 
 import {HeaderContainer, LogoContainer,OptionsContainer,OptionLink} from "./header.styles"
 
@@ -34,6 +34,7 @@ const mapStateToProps = createStructuredSelector({
         hidden: selectCartHidden,
 })
 const mapDispatchToProps = dispatch => ({
-    startSignOut:()=>dispatch(startSignOut())
+    startSignOut: () => dispatch(startSignOut()),
+    
 })
 export default connect(mapStateToProps,mapDispatchToProps) (Header) ; 

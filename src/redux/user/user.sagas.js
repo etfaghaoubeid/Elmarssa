@@ -7,6 +7,7 @@ import {
     signOutSuccess
     
 } from "./user.actions"
+import {startClearCart} from "../cart/cart.actions"
 import {
     SET_CURRENT_USER,
     GOOGLE_SIGN_IN_FAILURE,

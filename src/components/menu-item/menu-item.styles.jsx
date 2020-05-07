@@ -15,14 +15,15 @@ export const Content = styled.div`
     align-items:center;
     justify-content: center;
     border:1px solid black;
-    position: absolute;
     background: #FFF;
     opacity: 0.7; 
+    position: absolute;
 
 `
 export const MenuItemContainer = styled.div`
-   min-width: 30%;
+    min-width: 30%;
     height: 240px;
+    overflow: hidden;
     flex:1 1 auto;
     display: flex;
     align-items: center;
@@ -32,23 +33,27 @@ export const MenuItemContainer = styled.div`
     overflow: hidden;
    &:hover{
        cursor: pointer;
-       ${BackgroundImage}{
+       & .background-image{
            transform: scale(1.1);
            transition: transform 6s cubic-bezier(0.25, 0.45, 0.45 , 0.95);
        }
-       ${Content}{
+       & .content{
            opacity: 0.9;
-       }
+       }   
    }
-    &.large{
-        height: 380px;;
-    }
+   
+    
     &:first-child{
         margin-right: 7.5px;
     }
     &:last-child{
         margin-left:7.5px;
     }
+
+    @media screen and (max-width: 800px) {
+       height:200px;
+       
+   }
     
 `
 
@@ -65,5 +70,4 @@ export const Title = styled.h1`
 export const SubTitle = styled.span`
     font-weight:bold;
     font-size: 16px;
-
 `

@@ -1,3 +1,7 @@
+import { createGlobalStyle } from "styled-components";
+
+
+const GolobalStyle = createGlobalStyle`
 body{
     font-family: 'Open Sans Condensed', sans-serif;
     padding: 20px 60px;
@@ -11,3 +15,7 @@ a{
 *{
     box-sizing: border-box; 
 }
+
+`
+
+export default  GolobalStyle;

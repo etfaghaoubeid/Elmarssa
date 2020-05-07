@@ -15,6 +15,12 @@ export const START_SIGN_OUT = "START_SIGN_OUT"
 export const SIGN_OUT_SUCCESS = "SIGN_OUT_SUCCESS"
 export const SIGN_OUT_FAILURE = "SIGN_OUT_FAILURE"
 
+export const START_SIGN_UP = "START_SIGN_UP"
+export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS"
+export const SIGN_UP_FAILURE = "SIGN_UP_FAILURE"
+
+
+
 
 
 

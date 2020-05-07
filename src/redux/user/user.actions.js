@@ -1,15 +1,14 @@
 import {
-    SET_CURRENT_USER,
-    GOOGLE_SIGN_IN_FAILURE,
     GOOGLE_SIGN_IN_START,
-    GOOGLE_SIGN_IN_SUCCESS,
     EMAIL_SIGN_IN_FAILURE,
     EMAIL_SIGN_IN_START,
-    EMAIL_SIGN_IN_SUCCESS,
     SIGN_IN_SUCCESS,
     SIGN_IN_FAILURE,
     START_SIGN_OUT,
     SIGN_OUT_SUCCESS,
+    SIGN_UP_FAILURE,
+    SIGN_UP_SUCCESS,
+    START_SIGN_UP,
     SIGN_OUT_FAILURE
 } from "./user.action.types"
 
@@ -45,6 +44,19 @@ export const emailSignInStart = (emailAndPassword)=>({
     
 })
 export const emailSignInSuccess = user=>({
-    type:EMAIL_SIGN_IN_SUCCESS,
+    type:SIGN_UP_SUCCESS,
     payload:user
+})
+export const signUpFailure = (message)=>({
+    type:SIGN_UP_FAILURE,
+    payload:message
+})
+export const signUpStart = (user)=>({
+    type: START_SIGN_UP,
+    payload:user
+    
+})
+export const signUpSuccess = ({user, additionalData})=>({
+    type:SIGN_UP_SUCCESS,
+    payload:{user ,additionalData}
 })

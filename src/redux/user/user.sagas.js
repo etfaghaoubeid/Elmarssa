@@ -4,19 +4,17 @@ import {
     signInSuccess,
     signInFailure,
     signOutFailure,
-    signOutSuccess
+    signOutSuccess,
+    signUpFailure,
+    signUpSuccess
     
 } from "./user.actions"
-import {startClearCart} from "../cart/cart.actions"
 import {
-    SET_CURRENT_USER,
-    GOOGLE_SIGN_IN_FAILURE,
     GOOGLE_SIGN_IN_START,
-    GOOGLE_SIGN_IN_SUCCESS,
-    EMAIL_SIGN_IN_FAILURE,
     EMAIL_SIGN_IN_START,
-    EMAIL_SIGN_IN_SUCCESS,
-    START_SIGN_OUT
+    START_SIGN_OUT,
+    START_SIGN_UP,
+    SIGN_UP_SUCCESS
 } from "./user.action.types"
 function* getSnapshotFromUserAuth(userAuth, aditionalData) {
     try {
@@ -43,12 +41,34 @@ export function* startSignInWithEmail({payload:{email, password}}) {
     }catch(error){yield put(signInFailure(error.message))}
 
 }
+function* signUp({payload:{email, password , displayName}}) {
+    try{
+        const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+        yield put(signUpSuccess({user , aditionalData:{displayName}}))
+        yield createUserProfileDocument(user , {displayName}); 
+        
+
+    }catch(error){ put(signUpFailure(error.message)) }
+    
+}
 function* startSignOut() {
     try {
         yield auth.signOut()
         yield put(signOutSuccess())
         
     }catch(err){yield put(signOutFailure())}
+    
+}
+export function* signInAfterSignUp({ payload: { user, aditionalData } }) {
+    yield getSnapshotFromUserAuth(user , aditionalData)
+    
+}
+export function* onSignUpSuccess() {
+    yield takeLatest(SIGN_UP_SUCCESS , signInAfterSignUp)
+    
+}
+export function* startSignUp() {
+    yield takeLatest(START_SIGN_UP,signUp)
     
 }
 export function* signOut() {
@@ -60,6 +80,7 @@ export function* signInWithEmail() {
 export function* signInWithGoogle() {
     yield takeLatest(GOOGLE_SIGN_IN_START , googleSignInStart)
 }
+
 export function* userSagas() {
-    yield all([call(signInWithGoogle),call(signInWithEmail), call(signOut)])
+    yield all([call(signInWithGoogle),call(signInWithEmail), call(signOut), call(startSignUp), call(onSignUpSuccess)])
 }

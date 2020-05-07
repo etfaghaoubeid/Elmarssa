@@ -9,7 +9,10 @@ import {
     SIGN_IN_SUCCESS,
     SIGN_IN_FAILURE,
     SIGN_OUT_FAILURE,
-    SIGN_OUT_SUCCESS
+    SIGN_OUT_SUCCESS,
+    SIGN_UP_FAILURE,
+    START_SIGN_UP,
+    SIGN_UP_SUCCESS
 } from "./user.action.types"
 const initState= {
     currentUser: null,
@@ -20,16 +23,19 @@ const initState= {
 export default function userReducer(state =initState, action ){
     switch (action.type) {
         case GOOGLE_SIGN_IN_START:
-        case EMAIL_SIGN_IN_START:    
+        case EMAIL_SIGN_IN_START:   
+        case  START_SIGN_UP:     
             return {
                 ...state,
             }
         case SIGN_IN_SUCCESS:
+        case SIGN_UP_SUCCESS:    
             return {
                 ...state,
                 currentUser: action.payload,
                 errorMessage:null
             }
+       
         case SIGN_OUT_SUCCESS:
             return {
                 ...state,
@@ -37,7 +43,8 @@ export default function userReducer(state =initState, action ){
                 errorMessage:null
             }
         case SIGN_IN_FAILURE:
-        case SIGN_OUT_FAILURE:    
+        case SIGN_OUT_FAILURE: 
+        case SIGN_UP_FAILURE:    
             return {
                 ...state,
                 errorMessage:action.payload

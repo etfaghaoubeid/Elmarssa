@@ -1,7 +1,6 @@
 import React from "react"; 
+
 import {Group,FormInputs,FormInputLabel} from "./form-input.styles"
-
-
 
 const FormInput = ({handleChange, label , ...otherPropos})=>(
     <Group>

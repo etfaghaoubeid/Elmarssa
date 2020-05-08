@@ -1,10 +1,12 @@
 import React from "react"; 
 import { connect } from "react-redux";
+
 import {CollectionItemContainer,Image ,CollectionFooter, Name, Price,Button}from "./collection-item.styles"
+
 import {addItem} from "../../redux/cart/cart.actions"
 
-const CollectionItem = ({item,addItem})=>{
-  const {imageUrl , name , price}= item
+const CollectionItem = ({ item, addItem }) => {
+const {imageUrl , name , price}= item
   return(
     <CollectionItemContainer>
       <Image className="image" imageUrl={imageUrl}/>

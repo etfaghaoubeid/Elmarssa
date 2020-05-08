@@ -1,6 +1,9 @@
 import React from "react"
-import {CollectionPreviewContainer,Title,Preview} from "./collection-preview.styles"
+
 import CollectionItem from "../collection-item/collection-item.component";
+
+import { CollectionPreviewContainer, Title, Preview } from "./collection-preview.styles"
+
 const CollectionPreview = ({title,  items} )=>(
   <CollectionPreviewContainer>
   <Title>{title.toUpperCase()}</Title>

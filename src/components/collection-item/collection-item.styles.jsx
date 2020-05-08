@@ -1,11 +1,19 @@
 import styled from "styled-components";
 import CustomButton from "../custom-button/custom-button.component";
 export const Button = styled(CustomButton)`
-    width: 80px;
+    width: 80%;
     opacity: 0.7;
     position: absolute;
     top: 255px;
     display: none;
+    @media screen and (max-width:800px) {
+      display: block;
+      opacity: 0.9;
+      min-width: unset;
+      padding:0 10px;
+
+      
+    }
     
 `
 export const Image = styled.div`

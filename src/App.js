@@ -12,8 +12,7 @@ import GolobalStyle from './golobal.styles';
 
 import {currentUserSelector} from "./redux/user/user.selectors"
 
-class App extends React.Component  {
-  render(){
+const App =({currentUser})=>{
     return (
       <div>
         <GolobalStyle/>
@@ -21,10 +20,9 @@ class App extends React.Component  {
         <Route exact path="/" component={HomePage}/>
         <Route path="/shop" component={ShopPage} />
         <Route path="/checkout" component={CheckoutPage} />
-        <Route exact path="/signin"  render={()=>this.props.currentUser? (<Redirect to="/" />): (<SignInAndSignUp/>)}/>
+        <Route exact path="/signin"  render={()=>currentUser? (<Redirect to="/" />): (<SignInAndSignUp/>)}/>
       </div>
     );
-  }
 }
 const mapStateToProps = createStructuredSelector({
   currentUser:currentUserSelector

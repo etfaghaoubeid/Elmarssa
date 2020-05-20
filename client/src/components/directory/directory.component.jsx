@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { connect } from "react-redux";
 import {createStructuredSelector} from "reselect"
 
@@ -14,7 +14,7 @@ const Directory =({sections,})=> {
       {sections.map(({id, ...otherSectionProps} )=><MenuItem key={id} {...otherSectionProps} />)}
     </DirectoryContainer>
   )   
-}
+} 
 const mapStateToProps = createStructuredSelector({
   sections:selectDirectorySections
 })

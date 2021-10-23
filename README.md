@@ -41,6 +41,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/ad
 
 
 
-### `yarn build` fails to mi
+### `yarn build` fails
 
 This section has moved here: https://fac.github.io/create-react-app/docs/troubleshooting#npmbuild-fails-to-mini
